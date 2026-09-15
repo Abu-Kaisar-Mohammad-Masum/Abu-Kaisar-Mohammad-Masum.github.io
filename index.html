@@ -78,37 +78,41 @@
     .vpulse { fill: none; stroke: #2563eb; stroke-width: 1; animation: vpulse 2.8s ease-out infinite; }
     .vpulse:nth-child(2) { animation-delay: 1.4s; }
 
-    /* compact research topic labels */
+    /* compact research topic labels — names only, no boxes */
     .venn-legend {
       display:flex;
       justify-content:center;
       align-items:center;
       flex-wrap:wrap;
-      gap:22px;
-      margin-top:4px;
+      gap:24px;
+      margin:6px auto 0;
+      padding:0;
     }
     .vlegend-item {
-      display:flex;
+      display:inline-flex;
       align-items:center;
-      gap:7px;
-      padding:0;
-      border:0;
-      border-radius:0;
-      background:transparent;
+      gap:6px;
+      padding:0 !important;
+      margin:0 !important;
+      border:0 !important;
+      border-radius:0 !important;
+      background:transparent !important;
+      box-shadow:none !important;
     }
     .vlegend-dot {
-      width:8px;
-      height:8px;
+      width:7px;
+      height:7px;
       border-radius:50%;
-      flex-shrink:0;
+      flex:0 0 7px;
       margin:0;
     }
     .vlegend-name {
       font-size:12px;
       font-weight:700;
-      line-height:1;
+      line-height:1.2;
+      white-space:nowrap;
     }
-    .vlegend-desc { display:none; }
+    .vlegend-desc { display:none !important; }
   </style>
 </head>
 
@@ -221,7 +225,7 @@
             HW   bot-left    cx=228 cy=368 r=145  → green  #16a34a
             LLM  bot-right   cx=412 cy=368 r=145  → amber  #d97706
         -->
-        <svg viewBox="105 80 430 390" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="95 65 450 425" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <radialGradient id="gQML" cx="50%" cy="50%" r="50%">
               <stop offset="0%" stop-color="#2563eb" stop-opacity=".9"/>
