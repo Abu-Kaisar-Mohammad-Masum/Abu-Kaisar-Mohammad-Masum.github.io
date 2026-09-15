@@ -311,3 +311,88 @@ code{color:var(--text);background:rgba(15,23,42,.06);padding:2px 6px;border-radi
 
 /* Prevent overlay from blocking clicks */
 .thumb-fallback{ pointer-events:none; }
+
+
+/* Research metrics */
+.metrics-head{align-items:center}
+.metrics-source-link{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:12px;font-weight:800;
+  padding:7px 11px;border:1px solid var(--line);
+  border-radius:999px;background:rgba(15,23,42,.02);
+}
+.metrics-grid{
+  display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px;
+}
+@media(min-width:900px){.metrics-grid{grid-template-columns:1fr 1fr}}
+.metric-panel{
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:rgba(15,23,42,.02);
+  padding:14px;
+  min-height:290px;
+}
+.metric-panel-head{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:10px;
+  margin-bottom:12px;
+}
+.metric-panel-head h3{font-size:15px;margin:0 0 3px}
+.metric-panel-head p{margin:0}
+.metric-pill{
+  flex-shrink:0;
+  display:inline-flex;align-items:center;
+  padding:4px 8px;border-radius:999px;
+  background:rgba(37,99,235,.08);
+  border:1px solid rgba(37,99,235,.18);
+  color:#1e3a8a;font-size:10px;font-weight:900;letter-spacing:.04em;
+}
+.metric-pill-alt{
+  background:rgba(22,163,74,.08);
+  border-color:rgba(22,163,74,.18);
+  color:#166534;
+}
+.metric-loading{
+  min-height:205px;display:grid;place-items:center;
+  color:var(--muted);font-size:12px;text-align:center;
+}
+.venue-chart{display:grid;gap:10px}
+.venue-row{
+  display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:center;
+}
+.venue-rank{
+  color:#94a3b8;font-size:10px;font-weight:900;letter-spacing:.04em;
+}
+.venue-main{min-width:0}
+.venue-label{
+  display:flex;justify-content:space-between;gap:10px;align-items:center;
+  font-size:12px;margin-bottom:5px;
+}
+.venue-label span{
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:800;color:var(--text);
+}
+.venue-label strong{font-size:11px;color:var(--accent)}
+.venue-track{
+  width:100%;height:7px;background:rgba(15,23,42,.07);border-radius:999px;overflow:hidden;
+}
+.venue-track span{
+  display:block;height:100%;border-radius:999px;
+  background:linear-gradient(90deg, rgba(37,99,235,.72), rgba(37,99,235,.28));
+}
+.citation-chart svg{width:100%;height:auto;display:block;overflow:visible}
+.cite-grid{stroke:rgba(15,23,42,.08);stroke-width:1}
+.cite-y,.cite-x{
+  fill:#64748b;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;font-size:9px;
+}
+.cite-y{text-anchor:end}.cite-x{text-anchor:middle}
+.cite-area{fill:rgba(37,99,235,.08)}
+.cite-line{fill:none;stroke:#2563eb;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.cite-dot{fill:#ffffff;stroke:#2563eb;stroke-width:2.1}
+.citation-summary{
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  border-top:1px solid var(--line);margin-top:4px;padding-top:10px;
+  color:var(--muted);font-size:11px;
+}
+.citation-summary b{color:var(--text)}
+.metrics-note{
+  margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);line-height:1.55;
+}
