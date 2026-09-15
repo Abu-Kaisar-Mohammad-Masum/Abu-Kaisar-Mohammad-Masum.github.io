@@ -78,30 +78,37 @@
     .vpulse { fill: none; stroke: #2563eb; stroke-width: 1; animation: vpulse 2.8s ease-out infinite; }
     .vpulse:nth-child(2) { animation-delay: 1.4s; }
 
-    /* legend row — uses .card / .tag look */
+    /* compact research topic labels */
     .venn-legend {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 10px;
-      margin-top: 18px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:22px;
+      margin-top:4px;
     }
     .vlegend-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      padding: 10px 12px;
-      border: 1px solid rgba(15,23,42,.12);
-      border-radius: 12px;
-      background: rgba(15,23,42,.02);
+      display:flex;
+      align-items:center;
+      gap:7px;
+      padding:0;
+      border:0;
+      border-radius:0;
+      background:transparent;
     }
     .vlegend-dot {
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      margin-top: 3px;
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      flex-shrink:0;
+      margin:0;
     }
-    .vlegend-name { font-size: 13px; font-weight: 700; }
-    .vlegend-desc { font-size: 11px; color: #475569; margin-top: 2px; line-height: 1.4; }
+    .vlegend-name {
+      font-size:12px;
+      font-weight:700;
+      line-height:1;
+    }
+    .vlegend-desc { display:none; }
   </style>
 </head>
 
@@ -214,7 +221,7 @@
             HW   bot-left    cx=228 cy=368 r=145  → green  #16a34a
             LLM  bot-right   cx=412 cy=368 r=145  → amber  #d97706
         -->
-        <svg viewBox="0 0 640 560" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="105 80 430 390" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <radialGradient id="gQML" cx="50%" cy="50%" r="50%">
               <stop offset="0%" stop-color="#2563eb" stop-opacity=".9"/>
@@ -301,35 +308,26 @@
         </svg>
       </div>
 
-      <!-- legend — styled like site .tag chips -->
-      <div class="venn-legend">
+      <!-- Research topic labels -->
+      <div class="venn-legend" aria-label="Research areas">
         <div class="vlegend-item">
-          <div class="vlegend-dot" style="background:#2563eb"></div>
-          <div>
-            <div class="vlegend-name deepblue">Quantum ML</div>
-            <div class="vlegend-desc">Hybrid models, image encoding, QRNG, QuanText</div>
-          </div>
+          <span class="vlegend-dot" style="background:#2563eb"></span>
+          <span class="vlegend-name deepblue">Quantum ML</span>
         </div>
+
         <div class="vlegend-item">
-          <div class="vlegend-dot" style="background:#dc2626"></div>
-          <div>
-            <div class="vlegend-name red">HDC / VSA</div>
-            <div class="vlegend-desc">Hypervectors, deterministic learning, GPU HDC, ReRAM</div>
-          </div>
+          <span class="vlegend-dot" style="background:#dc2626"></span>
+          <span class="vlegend-name red">HDC / VSA</span>
         </div>
+
         <div class="vlegend-item">
-          <div class="vlegend-dot" style="background:#16a34a"></div>
-          <div>
-            <div class="vlegend-name" style="color:#16a34a;font-weight:700">Hardware-Efficient AI</div>
-            <div class="vlegend-desc">Edge inference, malware detection, health monitoring</div>
-          </div>
+          <span class="vlegend-dot" style="background:#16a34a"></span>
+          <span class="vlegend-name" style="color:#16a34a">Hardware-Efficient AI</span>
         </div>
+
         <div class="vlegend-item">
-          <div class="vlegend-dot" style="background:#d97706"></div>
-          <div>
-            <div class="vlegend-name" style="color:#d97706;font-weight:700">LLM &amp; NLP</div>
-            <div class="vlegend-desc">LLM quantization, BERT fine-tuning, benchmarking</div>
-          </div>
+          <span class="vlegend-dot" style="background:#d97706"></span>
+          <span class="vlegend-name" style="color:#d97706">LLM &amp; NLP</span>
         </div>
       </div>
     </section>
@@ -675,15 +673,14 @@
     <section id="teaching" class="card">
       <h2>🎓 Teaching</h2>
       <ul>
-        <li><b>Teaching Assistant:</b> Machine Learning (CMPS 422, CSCE 598) — Spring 2025, Fall 2025, Spring 2026, Fall 2026</li>
-        <li><b>Teaching Assistant:</b> Introduction to Computer Science (CMPS 150) — Fall 2024</li>
         <li><b>Lecturer, Daffodil International University:</b> 2021–2023
           <ul>
             <li>Machine Learning</li>
             <li>Natural Language Processing</li>
-            <li>Artificial Intelligence (AI)</li>
           </ul>
         </li>
+        <li><b>Teaching Assistant:</b> Machine Learning (CMPS 422, CSCE 598) — Spring 2025, Fall 2025, Spring 2026, Fall 2026</li>
+        <li><b>Teaching Assistant:</b> Introduction to Computer Science (CMPS 150) — Fall 2024</li>
       </ul>
     </section>
 
