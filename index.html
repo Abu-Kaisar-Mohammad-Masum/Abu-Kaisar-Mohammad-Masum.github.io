@@ -7,105 +7,14 @@
   <title>Abu Kaisar Mohammad Masum | Portfolio</title>
   <link rel="stylesheet" href="assets/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" referrerpolicy="no-referrer">
-
-  <style>
-    /* ── Venn diagram – uses only site CSS variables & colors ── */
-    .venn-wrap {
-      width: 100%;
-      max-width: 660px;
-      margin: 18px auto 0;
-    }
-    .venn-wrap svg {
-      width: 100%;
-      height: auto;
-      overflow: visible;
-    }
-
-    /* circle interactions */
-    .vgroup .vcircle        { opacity: .12; transition: opacity .3s; }
-    .vgroup .vcircle-border { fill: none; stroke-width: 1.5; opacity: .4; transition: opacity .3s; }
-    .vgroup:hover .vcircle        { opacity: .22; }
-    .vgroup:hover .vcircle-border { opacity: 1; }
-
-    /* SVG text — same font stack as body */
-    .vclabel {
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      font-size: 13px;
-      font-weight: 700;
-      text-anchor: middle;
-      dominant-baseline: middle;
-      pointer-events: none;
-    }
-    .vclabel-sub {
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      font-size: 9px;
-      letter-spacing: .04em;
-      text-anchor: middle;
-      pointer-events: none;
-      fill: #475569;
-    }
-    .vilabel {
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      font-size: 8px;
-      text-anchor: middle;
-      dominant-baseline: middle;
-      pointer-events: none;
-      fill: #475569;
-    }
-    .vcentre {
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      font-size: 11px;
-      font-weight: 700;
-      text-anchor: middle;
-      dominant-baseline: middle;
-      pointer-events: none;
-      fill: #0f172a;
-    }
-    .vcentre-sub {
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      font-size: 8px;
-      letter-spacing: .08em;
-      text-anchor: middle;
-      pointer-events: none;
-      fill: #475569;
-    }
-
-    /* subtle pulse on centre using site --accent blue */
-    @keyframes vpulse {
-      0%   { r: 42; opacity: .4; }
-      100% { r: 64; opacity: 0;  }
-    }
-    .vpulse { fill: none; stroke: #2563eb; stroke-width: 1; animation: vpulse 2.8s ease-out infinite; }
-    .vpulse:nth-child(2) { animation-delay: 1.4s; }
-
-    /* legend row — uses .card / .tag look */
-    .venn-legend {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 10px;
-      margin-top: 18px;
-    }
-    .vlegend-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      padding: 10px 12px;
-      border: 1px solid rgba(15,23,42,.12);
-      border-radius: 12px;
-      background: rgba(15,23,42,.02);
-    }
-    .vlegend-dot {
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      margin-top: 3px;
-    }
-    .vlegend-name { font-size: 13px; font-weight: 700; }
-    .vlegend-desc { font-size: 11px; color: #475569; margin-top: 2px; line-height: 1.4; }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,650&family=Inter:wght@400;500;600;650;700&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body id="top">
+  <div id="scrollProgress" aria-hidden="true"></div>
+
   <header class="container header">
     <div class="hero">
       <div class="avatar-wrap">
@@ -114,13 +23,14 @@
       </div>
 
       <div class="hero-text">
+        <div class="eyebrow">Ph.D. Candidate, University of Louisiana at Lafayette</div>
         <h1>Abu Kaisar Mohammad Masum</h1>
         <p class="subtitle">
-          Ph.D. Candidate • Quantum Machine Learning • LLM • Emerging Computing • Hyperdimensional Computing (HDC)
+          Quantum Machine Learning · Hyperdimensional Computing · Hardware-Efficient AI · LLM Benchmarking
         </p>
 
         <div class="links">
-          <a class="iconlink" href="mailto:abukaisar24@gmail.com / c00591145@louisiana.edu" title="Email (Outlook)">
+          <a class="iconlink" href="mailto:abukaisar24@gmail.com" title="Email">
             <i class="fa-solid fa-envelope"></i>
             <span>c00591145@louisiana.edu</span>
           </a>
@@ -148,24 +58,39 @@
           <span class="tag">Edge Inference</span>
           <span class="tag">LLM Benchmarking</span>
         </div>
+
+        <div class="stats" id="statsStrip">
+          <div class="stat"><div class="stat-num" data-count-to="0" data-suffix="+">0</div><div class="stat-label">Publications</div></div>
+          <div class="stat"><div class="stat-num" data-count-to="0" data-suffix="+">0</div><div class="stat-label">Research venues</div></div>
+          <div class="stat"><div class="stat-num" data-count-to="0" data-suffix="+">0</div><div class="stat-label">Awards &amp; grants</div></div>
+          <div class="stat"><div class="stat-num" data-count-to="100" data-suffix="K">$0</div><div class="stat-label">NASA challenge grant</div></div>
+        </div>
       </div>
     </div>
-
-    <nav class="nav">
-      <a href="#about">About</a>
-      <a href="#research-map">Research Map</a>
-      <a href="#news">News</a>
-      <a href="#publications">Publications</a>
-      <a href="#teaching">Teaching</a>
-      <a href="#awards">Awards</a>
-      <a href="#contact">Contact</a>
-    </nav>
   </header>
+
+  <nav class="site-nav">
+    <div class="container navbar">
+      <div class="nav-brand">A.K.M. <span>Masum</span></div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
+        <span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#research-map">Research Map</a>
+        <a href="#news">News</a>
+        <a href="#publications">Publications</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#awards">Awards</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
 
   <main class="container">
 
     <!-- ══ ABOUT ══ -->
-    <section id="about" class="card">
+    <section id="about" class="section">
       <h2>About</h2>
       <p>
       Abu Kaisar Mohammad Masum is a Ph.D. candidate in Quantum Machine Learning and Emerging Computing at the University of Louisiana at Lafayette, where he also earned an M.S. in Computer Science.
@@ -201,7 +126,7 @@
     </section>
 
     <!-- ══ RESEARCH MAP ══ -->
-    <section id="research-map" class="card">
+    <section id="research-map" class="section card">
       <div class="section-head">
         <h2>Research Map</h2>
         <span class="muted tiny">Intersecting frontiers in emerging computing</span>
@@ -336,7 +261,7 @@
     </section>
 
     <!-- ══ NEWS ══ -->
-    <section id="news" class="card">
+    <section id="news" class="section card">
       <div class="section-head">
         <h2>News</h2>
         <span class="muted tiny">Latest highlights and milestones</span>
@@ -386,17 +311,24 @@
     </section>
 
     <!-- ══ PUBLICATIONS ══ -->
-    <section id="publications" class="card">
+    <section id="publications" class="section card">
       <div class="section-head">
         <h2>Selected Publications</h2>
+        <span class="pub-count" id="pubCount"></span>
+      </div>
+
+      <div class="pub-controls">
         <div class="filters">
           <button class="chip active" data-filter="all">All</button>
           <button class="chip" data-filter="Journal">Journal</button>
           <button class="chip" data-filter="Conference">Conference</button>
           <button class="chip" data-filter="Poster">Poster</button>
         </div>
+        <div class="pub-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="search" id="pubSearch" placeholder="Search title, author, or venue…" aria-label="Search publications">
+        </div>
       </div>
-
 
       <div class="pubgrid" id="pubgrid">
           <article class="pubcard" data-type="Conference" data-venue="ICTAI" data-year="2026">
@@ -668,10 +600,11 @@
           </div>
         </article>
       </div>
+      <div class="pub-empty" id="pubEmpty">No publications match your search or filter.</div>
     </section>
 
     <!-- ══ TEACHING ══ -->
-    <section id="teaching" class="card">
+    <section id="teaching" class="section">
       <h2>Teaching</h2>
       <ul>
         <li><b>Teaching Assistant:</b> Machine Learning (CMPS 422, CSCE 598) — Spring 2025, Fall 2025, Spring 2026, Fall 2026</li>
@@ -680,62 +613,137 @@
     </section>
 
     <!-- ══ AWARDS ══ -->
-    <section id="awards" class="card">
+    <section id="awards" class="section">
       <h2>Awards, Funding &amp; Recognition</h2>
-      <h3>Funding &amp; Travel Awards</h3>
-      <ul>
-        <li><i title="Award / Grant"></i><b>Winner:</b> NASA Beyond the Algorithm Challenge— Novel Computing Architectures for Flood Analysis (<b>$100K</b> grant)</li>
-        <li><i  title="Award / Grant"></i><b>Quantum Ideas Summer School</b> — Travel support (~<b>$2.5K</b>)</li>
-        <li><i title="Award / Grant"></i><b>DAC Young Fellow Award</b> (2025) — Travel award (~<b>$1.4K</b>)</li>
-        <li><i title="Award / Grant"></i><b>AAAI Travel Award</b> — Travel support (~<b>$1.04K</b>)</li>
-        <li><i title="Award / Grant"></i><b>IEEE Computer Society Travel Award</b> — Travel support (~<b>$1K</b>)</li>
-        <li><i title="Award / Grant"></i><b>IEEE CAS Student Travel Grant</b> — Travel support (<b>$1K</b>)</li>
-        <li><i  title="Award / Grant"></i><b>GLSVLSI'25 Student Volunteer Travel Award</b> — Travel support (~<b>$1K</b>)</li>
-      </ul>
-      <h3>Honors &amp; Recognition</h3>
-      <ul>
-        <li><i  title="Award / Grant"></i><b>Academic Excellence Award</b>, University of Louisiana at Lafayette (2025)</li>
-        <li><i title="Award / Grant"></i><b>Leaf Award</b>, University of Louisiana at Lafayette (2025)</li>
-        <li><i title="Award / Grant"></i><b>Peer Tutoring Excellence Awards</b> (Fall 2023 &amp; Spring 2024), Florida Institute of Technology</li>
-        <li><i title="Award / Grant"></i><b>Outstanding Student of the Year</b> (2023), Florida Institute of Technology</li>
-        <li><i title="Award / Grant"></i><b>Best Performing Faculty</b> and <b>Best Researcher</b>, Daffodil International University (2021)</li>
-      </ul>
+      <div class="award-groups">
+        <div>
+          <h3>Funding &amp; Travel Awards</h3>
+          <ul class="award-list">
+            <li><i class="fa-solid fa-trophy" title="Award / Grant"></i><span><b>Winner:</b> NASA Beyond the Algorithm Challenge — Novel Computing Architectures for Flood Analysis (<b>$100K</b> grant)</span></li>
+            <li><i class="fa-solid fa-trophy" title="Award / Grant"></i><span><b>Quantum Ideas Summer School</b> — Travel support (~<b>$2.5K</b>)</span></li>
+            <li><i class="fa-solid fa-trophy" title="Award / Grant"></i><span><b>DAC Young Fellow Award</b> (2025) — Travel award (~<b>$1.4K</b>)</span></li>
+            <li><i class="fa-solid fa-trophy" title="Award / Grant"></i><span><b>AAAI Travel Award</b> — Travel support (~<b>$1.04K</b>)</span></li>
+            <li><i class="fa-solid fa-trophy" title="Award / Grant"></i><span><b>IEEE Computer Society Travel Award</b> — Travel support (~<b>$1K</b>)</span></li>
+            <li><i class="fa-solid fa-trophy" title="Award / Grant"></i><span><b>IEEE CAS Student Travel Grant</b> — Travel support (<b>$1K</b>)</span></li>
+            <li><i class="fa-solid fa-trophy" title="Award / Grant"></i><span><b>GLSVLSI'25 Student Volunteer Travel Award</b> — Travel support (~<b>$1K</b>)</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Honors &amp; Recognition</h3>
+          <ul class="award-list">
+            <li><i class="fa-solid fa-award" title="Award / Grant"></i><span><b>Academic Excellence Award</b>, University of Louisiana at Lafayette (2025)</span></li>
+            <li><i class="fa-solid fa-award" title="Award / Grant"></i><span><b>Leaf Award</b>, University of Louisiana at Lafayette (2025)</span></li>
+            <li><i class="fa-solid fa-award" title="Award / Grant"></i><span><b>Peer Tutoring Excellence Awards</b> (Fall 2023 &amp; Spring 2024), Florida Institute of Technology</span></li>
+            <li><i class="fa-solid fa-award" title="Award / Grant"></i><span><b>Outstanding Student of the Year</b> (2023), Florida Institute of Technology</span></li>
+            <li><i class="fa-solid fa-award" title="Award / Grant"></i><span><b>Best Performing Faculty</b> and <b>Best Researcher</b>, Daffodil International University (2021)</span></li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <!-- ══ CONTACT ══ -->
-    <section id="contact" class="card">
+    <section id="contact" class="section">
       <h2>Contact</h2>
-      <p>
-        Email: <a href="mailto:c00591145@louisiana.edu">abukaisar24@gmail.com / c00591145@louisiana.edu</a><br/>
-        GitHub: <a href="https://github.com/Abu-Kaisar-Mohammad-Masum" target="_blank" rel="noreferrer">Abu-Kaisar-Mohammad-Masum</a><br/>
-        Google Scholar: <a href="https://scholar.google.com/citations?user=B194MGYAAAAJ&hl=en" target="_blank" rel="noreferrer">Profile</a><br/>
-        LinkedIn: <a href="https://www.linkedin.com/in/abukaisar24/" target="_blank" rel="noreferrer">Profile</a>
-      </p>
+      <p class="muted">Happy to talk quantum ML, HDC, or collaboration opportunities — reach out through any of these.</p>
+      <div class="contact-grid">
+        <div class="contact-row"><i class="fa-solid fa-envelope"></i><a href="mailto:c00591145@louisiana.edu">c00591145@louisiana.edu</a></div>
+        <div class="contact-row"><i class="fa-brands fa-github"></i><a href="https://github.com/Abu-Kaisar-Mohammad-Masum" target="_blank" rel="noreferrer">Abu-Kaisar-Mohammad-Masum</a></div>
+        <div class="contact-row"><i class="fa-solid fa-graduation-cap"></i><a href="https://scholar.google.com/citations?user=B194MGYAAAAJ&hl=en" target="_blank" rel="noreferrer">Google Scholar profile</a></div>
+        <div class="contact-row"><i class="fa-brands fa-linkedin"></i><a href="https://www.linkedin.com/in/abukaisar24/" target="_blank" rel="noreferrer">LinkedIn profile</a></div>
+      </div>
     </section>
 
     <footer class="footer">
       <span>© <span id="year"></span> Abu Kaisar Mohammad Masum</span>
+      <a href="#top">Back to top</a>
     </footer>
   </main>
+
+  <button id="backToTop" aria-label="Back to top" title="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
 
   <script>
     window.addEventListener("load", () => {
       document.getElementById("year").textContent = new Date().getFullYear();
 
+      /* ── Publications: filter + live search combined ── */
       const chips = document.querySelectorAll(".chip");
-      const cards = document.querySelectorAll(".pubcard");
-      function setActive(btn){ chips.forEach(b=>b.classList.remove("active")); btn.classList.add("active"); }
+      const cards = Array.from(document.querySelectorAll(".pubcard"));
+      const searchInput = document.getElementById("pubSearch");
+      const pubEmpty = document.getElementById("pubEmpty");
+      const pubGrid = document.getElementById("pubgrid");
+      let activeFilter = "all";
+
+      function applyPubView(){
+        const q = (searchInput.value || "").trim().toLowerCase();
+        let visible = 0;
+        cards.forEach(c => {
+          const type = c.getAttribute("data-type");
+          const matchesFilter = activeFilter === "all" || type === activeFilter;
+          const matchesSearch = !q || c.textContent.toLowerCase().includes(q);
+          const show = matchesFilter && matchesSearch;
+          c.style.display = show ? "" : "none";
+          if (show) visible++;
+        });
+        pubEmpty.style.display = visible === 0 ? "block" : "none";
+        pubGrid.style.display = visible === 0 ? "none" : "";
+      }
+
       chips.forEach(btn => {
         btn.addEventListener("click", () => {
-          const f = btn.getAttribute("data-filter");
-          setActive(btn);
-          cards.forEach(c => {
-            const t = c.getAttribute("data-type");
-            c.style.display = (f === "all" || t === f) ? "" : "none";
-          });
+          activeFilter = btn.getAttribute("data-filter");
+          chips.forEach(b=>b.classList.remove("active"));
+          btn.classList.add("active");
+          applyPubView();
         });
       });
+      if (searchInput) searchInput.addEventListener("input", applyPubView);
 
+      /* ── Publication count + hero stats, computed from real content ── */
+      const pubCountEl = document.getElementById("pubCount");
+      if (pubCountEl) pubCountEl.textContent = cards.length + " papers";
+
+      const venueSet = new Set(cards.map(c => c.getAttribute("data-venue")).filter(Boolean));
+      const trophyCount = document.querySelectorAll(".fa-trophy, .fa-award").length;
+
+      const statNums = document.querySelectorAll(".stat-num");
+      if (statNums[0]) statNums[0].setAttribute("data-count-to", cards.length);
+      if (statNums[1]) statNums[1].setAttribute("data-count-to", venueSet.size);
+      if (statNums[2]) statNums[2].setAttribute("data-count-to", trophyCount);
+
+      function animateCount(el){
+        const target = parseInt(el.getAttribute("data-count-to"), 10) || 0;
+        const suffix = el.getAttribute("data-suffix") || "";
+        const isMoney = el.textContent.trim().startsWith("$");
+        const duration = 900;
+        const start = performance.now();
+        function step(now){
+          const p = Math.min(1, (now - start) / duration);
+          const eased = 1 - Math.pow(1 - p, 3);
+          const val = Math.round(target * eased);
+          el.textContent = (isMoney ? "$" : "") + val + suffix;
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      const statsStrip = document.getElementById("statsStrip");
+      if (statsStrip && "IntersectionObserver" in window) {
+        const statsObs = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              statNums.forEach(animateCount);
+              statsObs.disconnect();
+            }
+          });
+        }, { threshold: 0.4 });
+        statsObs.observe(statsStrip);
+      } else {
+        statNums.forEach(animateCount);
+      }
+
+      /* ── Publication thumbnail fallback ── */
       document.querySelectorAll(".thumb").forEach((thumb) => {
         const url = thumb.getAttribute("data-bg");
         if (!url) return;
@@ -747,7 +755,7 @@
         img.src = url + (url.includes("?") ? "&" : "?") + "v=" + Date.now();
       });
 
-      // ── News: show first 10, toggle the rest ──
+      /* ── News: show first batch, toggle the rest ── */
       const newsBtn = document.getElementById("newsToggleBtn");
       const newsExtra = document.getElementById("newsListExtra");
       if (newsBtn && newsExtra) {
@@ -764,6 +772,72 @@
             icon.classList.toggle("fa-chevron-up", isHidden);
           }
         });
+      }
+
+      /* ── Mobile nav toggle ── */
+      const navToggle = document.getElementById("navToggle");
+      const navLinks = document.getElementById("navLinks");
+      if (navToggle && navLinks) {
+        navToggle.addEventListener("click", () => {
+          const open = navLinks.classList.toggle("open");
+          navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+        navLinks.querySelectorAll("a").forEach(a => {
+          a.addEventListener("click", () => {
+            navLinks.classList.remove("open");
+            navToggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      }
+
+      /* ── Scrollspy: highlight the nav link for the visible section ── */
+      const navAnchors = Array.from(document.querySelectorAll(".nav-links a"));
+      const sections = navAnchors
+        .map(a => document.querySelector(a.getAttribute("href")))
+        .filter(Boolean);
+      if ("IntersectionObserver" in window && sections.length) {
+        const spy = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            const id = "#" + entry.target.id;
+            const link = navAnchors.find(a => a.getAttribute("href") === id);
+            if (!link) return;
+            if (entry.isIntersecting) {
+              navAnchors.forEach(a => a.classList.remove("active"));
+              link.classList.add("active");
+            }
+          });
+        }, { rootMargin: "-40% 0px -50% 0px", threshold: 0 });
+        sections.forEach(s => spy.observe(s));
+      }
+
+      /* ── Scroll progress bar + back-to-top ── */
+      const progress = document.getElementById("scrollProgress");
+      const backToTop = document.getElementById("backToTop");
+      function onScroll(){
+        const h = document.documentElement;
+        const scrolled = h.scrollTop;
+        const max = h.scrollHeight - h.clientHeight;
+        if (progress) progress.style.width = (max > 0 ? (scrolled / max) * 100 : 0) + "%";
+        if (backToTop) backToTop.classList.toggle("visible", scrolled > 500);
+      }
+      document.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+      if (backToTop) backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+      /* ── Section reveal: one orchestrated pass as sections enter view ── */
+      const revealTargets = document.querySelectorAll(".section");
+      if ("IntersectionObserver" in window) {
+        const reveal = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("revealed");
+              reveal.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.08 });
+        revealTargets.forEach(s => reveal.observe(s));
+      } else {
+        revealTargets.forEach(s => s.classList.add("revealed"));
       }
     });
   </script>
