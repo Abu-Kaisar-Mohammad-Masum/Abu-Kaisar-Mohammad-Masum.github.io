@@ -444,3 +444,23 @@ li{margin:2px 0}
   .thumb{height:72px;min-height:72px}
   .timeline li{grid-template-columns:72px 1fr}
 }
+
+
+/* Final compact academic refinements */
+#news .timeline .item,
+#news .timeline .item span,
+#news .timeline .item b,
+#news .timeline .item strong {
+  color:#222 !important;
+}
+#news .trophy-icon { color:#222 !important; }
+
+#research-map .venn-wrap{max-width:520px;margin-top:6px}
+#research-map .vclabel{font-size:10px}
+#research-map .vclabel-sub{font-size:7px;letter-spacing:.02em}
+#research-map .vilabel{font-size:6.5px}
+#research-map .vcentre{font-size:9px}
+#research-map .vcentre-sub{font-size:6.5px}
+#research-map .venn-legend{max-width:760px;margin-left:auto;margin-right:auto}
+
+.pub-venue-strip{display:none !important}
