@@ -517,3 +517,105 @@ li{margin:2px 0}
     font-size:11px;
   }
 }
+
+/* =========================================================
+   FINAL RESEARCH MAP LAYOUT FIX
+   - full circles remain inside SVG
+   - no overlap with topic labels
+   - topic labels have no boxes
+   ========================================================= */
+#research-map{
+  padding-top:18px;
+  padding-bottom:14px;
+}
+
+#research-map .section-head{
+  margin-bottom:0;
+}
+
+#research-map .venn-wrap{
+  width:100%;
+  max-width:570px;
+  margin:0 auto;
+}
+
+#research-map .venn-wrap svg{
+  display:block;
+  width:100%;
+  height:auto;
+  margin:0 auto;
+  overflow:hidden;
+}
+
+#research-map .venn-legend{
+  display:flex !important;
+  justify-content:center !important;
+  align-items:center !important;
+  flex-wrap:wrap !important;
+  gap:24px !important;
+  width:100% !important;
+  max-width:none !important;
+  margin:6px auto 0 !important;
+  padding:0 !important;
+  border:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+}
+
+#research-map .vlegend-item{
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:6px !important;
+  width:auto !important;
+  min-width:0 !important;
+  height:auto !important;
+  margin:0 !important;
+  padding:0 !important;
+  border:0 !important;
+  outline:0 !important;
+  border-radius:0 !important;
+  background:none !important;
+  background-color:transparent !important;
+  box-shadow:none !important;
+}
+
+#research-map .vlegend-dot{
+  display:inline-block !important;
+  width:7px !important;
+  height:7px !important;
+  flex:0 0 7px !important;
+  margin:0 !important;
+  padding:0 !important;
+  border:0 !important;
+  border-radius:50% !important;
+}
+
+#research-map .vlegend-name{
+  margin:0 !important;
+  padding:0 !important;
+  border:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  font-size:12px !important;
+  font-weight:700 !important;
+  line-height:1.2 !important;
+  white-space:nowrap !important;
+}
+
+#research-map .vlegend-desc{
+  display:none !important;
+}
+
+@media(max-width:700px){
+  #research-map .venn-wrap{
+    max-width:500px;
+  }
+
+  #research-map .venn-legend{
+    gap:10px 18px !important;
+  }
+
+  #research-map .vlegend-name{
+    font-size:11px !important;
+  }
+}
