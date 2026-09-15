@@ -166,7 +166,7 @@
 
     <!-- ══ ABOUT ══ -->
     <section id="about" class="card">
-      <h2>About</h2>
+      <h2>👋 About</h2>
       <p>
       Abu Kaisar Mohammad Masum is a Ph.D. candidate in Quantum Machine Learning and Emerging Computing at the University of Louisiana at Lafayette, where he also earned an M.S. in Computer Science.
       He received his B.S. in Computer Science and Engineering from Daffodil International University, Bangladesh. 
@@ -203,7 +203,7 @@
     <!-- ══ RESEARCH MAP ══ -->
     <section id="research-map" class="card">
       <div class="section-head">
-        <h2>Research Map</h2>
+        <h2>🔬 Research</h2>
         <span class="muted tiny">Intersecting frontiers in emerging computing</span>
       </div>
 
@@ -338,7 +338,7 @@
     <!-- ══ NEWS ══ -->
     <section id="news" class="card">
       <div class="section-head">
-        <h2>News</h2>
+        <h2>📌 News</h2>
         <span class="muted tiny">Latest highlights and milestones</span>
       </div>
 
@@ -387,8 +387,11 @@
 
     <!-- ══ PUBLICATIONS ══ -->
     <section id="publications" class="card">
-      <div class="section-head">
-        <h2>Selected Publications</h2>
+      <div class="section-head pub-section-head">
+        <div>
+          <h2>📝 Selected Publications</h2>
+          <div class="pub-venue-strip">DAC · AAAI · DATE · ISLPED · TBME · TVLSI · QCE · ICCD · GLSVLSI</div>
+        </div>
         <div class="filters">
           <button class="chip active" data-filter="all">All</button>
           <button class="chip" data-filter="Journal">Journal</button>
@@ -672,7 +675,7 @@
 
     <!-- ══ TEACHING ══ -->
     <section id="teaching" class="card">
-      <h2>Teaching</h2>
+      <h2>🎓 Teaching</h2>
       <ul>
         <li><b>Teaching Assistant:</b> Machine Learning (CMPS 422, CSCE 598) — Spring 2025, Fall 2025, Spring 2026, Fall 2026</li>
         <li><b>Teaching Assistant:</b> Introduction to Computer Science (CMPS 150) — Fall 2024</li>
@@ -681,7 +684,7 @@
 
     <!-- ══ AWARDS ══ -->
     <section id="awards" class="card">
-      <h2>Awards, Funding &amp; Recognition</h2>
+      <h2>🏆 Awards, Funding &amp; Recognition</h2>
       <h3>Funding &amp; Travel Awards</h3>
       <ul>
         <li><i title="Award / Grant"></i><b>Winner:</b> NASA Beyond the Algorithm Challenge— Novel Computing Architectures for Flood Analysis (<b>$100K</b> grant)</li>
@@ -704,7 +707,7 @@
 
     <!-- ══ CONTACT ══ -->
     <section id="contact" class="card">
-      <h2>Contact</h2>
+      <h2>✉️ Contact</h2>
       <p>
         Email: <a href="mailto:c00591145@louisiana.edu">abukaisar24@gmail.com / c00591145@louisiana.edu</a><br/>
         GitHub: <a href="https://github.com/Abu-Kaisar-Mohammad-Masum" target="_blank" rel="noreferrer">Abu-Kaisar-Mohammad-Masum</a><br/>
@@ -733,8 +736,34 @@
             const t = c.getAttribute("data-type");
             c.style.display = (f === "all" || t === f) ? "" : "none";
           });
+          document.querySelectorAll(".pub-year-heading").forEach(h => {
+            let next = h.nextElementSibling;
+            let hasVisible = false;
+            while (next && !next.classList.contains("pub-year-heading")) {
+              if (next.classList.contains("pubcard") && next.style.display !== "none") { hasVisible = true; break; }
+              next = next.nextElementSibling;
+            }
+            h.style.display = hasVisible ? "" : "none";
+          });
         });
       });
+
+      // Group publications by year in the compact academic-list style.
+      const pubgrid = document.getElementById("pubgrid");
+      if (pubgrid) {
+        const publicationCards = Array.from(pubgrid.querySelectorAll(".pubcard"));
+        let lastYear = null;
+        publicationCards.forEach(card => {
+          const year = card.getAttribute("data-year");
+          if (year && year !== lastYear) {
+            const heading = document.createElement("div");
+            heading.className = "pub-year-heading";
+            heading.textContent = year;
+            pubgrid.insertBefore(heading, card);
+            lastYear = year;
+          }
+        });
+      }
 
       document.querySelectorAll(".thumb").forEach((thumb) => {
         const url = thumb.getAttribute("data-bg");
