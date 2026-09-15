@@ -154,7 +154,6 @@
     <nav class="nav">
       <a href="#about">About</a>
       <a href="#research-map">Research Map</a>
-      <a href="#research-metrics">Research Metrics</a>
       <a href="#news">News</a>
       <a href="#publications">Publications</a>
       <a href="#teaching">Teaching</a>
@@ -333,51 +332,6 @@
             <div class="vlegend-desc">LLM quantization, BERT fine-tuning, benchmarking</div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- ══ RESEARCH METRICS ══ -->
-    <section id="research-metrics" class="card">
-      <div class="section-head metrics-head">
-        <div>
-          <h2>Research Metrics</h2>
-          <span class="muted tiny">Venue distribution from DBLP · yearly citations from OpenAlex</span>
-        </div>
-        <a class="metrics-source-link" href="https://dblp.org/pid/261/1339" target="_blank" rel="noreferrer">
-          <i class="fa-solid fa-arrow-up-right-from-square"></i> DBLP profile
-        </a>
-      </div>
-
-      <div class="metrics-grid">
-        <div class="metric-panel">
-          <div class="metric-panel-head">
-            <div>
-              <h3>Top Publication Venues</h3>
-              <p class="muted tiny">Top venues by number of DBLP-indexed publications.</p>
-            </div>
-            <span class="metric-pill">DBLP</span>
-          </div>
-          <div id="venueChart" class="venue-chart" aria-label="Top publication venues from DBLP">
-            <div class="metric-loading">Loading DBLP venue data…</div>
-          </div>
-        </div>
-
-        <div class="metric-panel">
-          <div class="metric-panel-head">
-            <div>
-              <h3>Citations by Year</h3>
-              <p class="muted tiny">Annual citations for works matched to your ORCID.</p>
-            </div>
-            <span class="metric-pill metric-pill-alt">OpenAlex</span>
-          </div>
-          <div id="citationChart" class="citation-chart" aria-label="Year-wise citation graph">
-            <div class="metric-loading">Loading citation data…</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="metrics-note tiny muted">
-        DBLP is used only for publication and venue metadata. DBLP does not provide author-level citation counts; the citation trend is therefore loaded from OpenAlex using ORCID 0000-0003-3190-9041.
       </div>
     </section>
 
@@ -793,121 +747,7 @@
         img.src = url + (url.includes("?") ? "&" : "?") + "v=" + Date.now();
       });
 
-      // ── Research metrics: DBLP venues + OpenAlex citations ──
-      const venueChart = document.getElementById("venueChart");
-      const citationChart = document.getElementById("citationChart");
-
-      const venueAliases = {
-        "ACM Great Lakes Symposium on VLSI": "GLSVLSI",
-        "Great Lakes Symposium on VLSI": "GLSVLSI",
-        "Design, Automation & Test in Europe Conference & Exhibition": "DATE",
-        "Design, Automation, and Test in Europe": "DATE",
-        "International Conference on Machine Learning and Applications": "ICMLA",
-        "IEEE International Conference on Machine Learning and Applications": "ICMLA",
-        "International Symposium on Low Power Electronics and Design": "ISLPED",
-        "IEEE International Symposium on Circuits and Systems": "ISCAS",
-        "International Symposium on Circuits and Systems": "ISCAS",
-        "AAAI Conference on Artificial Intelligence": "AAAI",
-        "Design Automation Conference": "DAC",
-        "IEEE International Conference on Computer Design": "ICCD",
-        "IEEE International Conference on Quantum Computing and Engineering": "QCE"
-      };
-
-      function shortVenue(info) {
-        const raw = (info.venue || info.booktitle || info.journal || info.publisher || "Other").trim();
-        if (venueAliases[raw]) return venueAliases[raw];
-        const upper = raw.match(/\(([A-Z][A-Z0-9-]{2,})\)/);
-        if (upper) return upper[1];
-        return raw.length > 22 ? raw.slice(0, 21) + "…" : raw;
-      }
-
-      function renderVenueBars(rows) {
-        if (!venueChart) return;
-        const max = Math.max(...rows.map(r => r.count), 1);
-        venueChart.innerHTML = rows.map((r, i) => `
-          <div class="venue-row">
-            <div class="venue-rank">${String(i + 1).padStart(2, "0")}</div>
-            <div class="venue-main">
-              <div class="venue-label"><span>${r.name}</span><strong>${r.count}</strong></div>
-              <div class="venue-track"><span style="width:${Math.max(8, (r.count / max) * 100)}%"></span></div>
-            </div>
-          </div>`).join("");
-      }
-
-      async function loadDblpVenues() {
-        if (!venueChart) return;
-        // Fallback values are derived from the current DBLP profile and keep the section usable offline.
-        const fallback = [
-          {name:"GLSVLSI", count:4}, {name:"DATE", count:3}, {name:"ICMLA", count:3},
-          {name:"ISLPED", count:2}, {name:"ISCAS", count:2}, {name:"AAAI", count:1},
-          {name:"DAC", count:1}, {name:"QCE", count:1}
-        ];
-        try {
-          const res = await fetch("https://dblp.org/pid/261/1339.json");
-          if (!res.ok) throw new Error("DBLP request failed");
-          const data = await res.json();
-          const hits = data?.result?.hits?.hit || [];
-          const counts = {};
-          hits.forEach(h => {
-            const info = h.info || {};
-            const name = shortVenue(info);
-            if (!name || name === "CoRR" || /arXiv/i.test(name)) return;
-            counts[name] = (counts[name] || 0) + 1;
-          });
-          const rows = Object.entries(counts)
-            .map(([name, count]) => ({name, count}))
-            .sort((a,b) => b.count - a.count || a.name.localeCompare(b.name))
-            .slice(0, 8);
-          renderVenueBars(rows.length ? rows : fallback);
-        } catch (e) {
-          renderVenueBars(fallback);
-        }
-      }
-
-      function renderCitationLine(rows) {
-        if (!citationChart) return;
-        if (!rows.length) { citationChart.innerHTML = '<div class="metric-loading">Citation data unavailable.</div>'; return; }
-        const w = 520, h = 220, pl = 44, pr = 16, pt = 18, pb = 38;
-        const maxY = Math.max(...rows.map(r => r.citations), 1);
-        const x = i => pl + (i * (w - pl - pr) / Math.max(rows.length - 1, 1));
-        const y = v => pt + (h - pt - pb) * (1 - v / maxY);
-        const points = rows.map((r,i) => `${x(i)},${y(r.citations)}`).join(" ");
-        const area = `${pl},${h-pb} ${points} ${x(rows.length-1)},${h-pb}`;
-        const yTicks = [0, .25, .5, .75, 1].map(t => Math.round(maxY*t));
-        citationChart.innerHTML = `
-          <svg viewBox="0 0 ${w} ${h}" role="img" aria-label="Citations by year">
-            ${yTicks.map(v => `<line class="cite-grid" x1="${pl}" x2="${w-pr}" y1="${y(v)}" y2="${y(v)}"></line><text class="cite-y" x="${pl-8}" y="${y(v)+4}">${v}</text>`).join("")}
-            <polygon class="cite-area" points="${area}"></polygon>
-            <polyline class="cite-line" points="${points}"></polyline>
-            ${rows.map((r,i) => `<circle class="cite-dot" cx="${x(i)}" cy="${y(r.citations)}" r="4"><title>${r.year}: ${r.citations} citations</title></circle>`).join("")}
-            ${rows.map((r,i) => `<text class="cite-x" x="${x(i)}" y="${h-13}">${r.year}</text>`).join("")}
-          </svg>
-          <div class="citation-summary">
-            <span><b>${rows.reduce((a,r)=>a+r.citations,0).toLocaleString()}</b> citations across displayed years</span>
-            <span>Peak: <b>${rows.reduce((a,b)=>a.citations>b.citations?a:b).year}</b></span>
-          </div>`;
-      }
-
-      async function loadCitations() {
-        if (!citationChart) return;
-        try {
-          const res = await fetch("https://api.openalex.org/authors/https://orcid.org/0000-0003-3190-9041");
-          if (!res.ok) throw new Error("OpenAlex request failed");
-          const data = await res.json();
-          const rows = (data.counts_by_year || [])
-            .filter(d => d.year >= 2019 && d.year <= new Date().getFullYear())
-            .map(d => ({year:d.year, citations:d.cited_by_count || 0}))
-            .sort((a,b) => a.year - b.year);
-          renderCitationLine(rows);
-        } catch (e) {
-          citationChart.innerHTML = '<div class="metric-loading">Citation data could not be loaded. <a href="https://openalex.org" target="_blank" rel="noreferrer">OpenAlex</a></div>';
-        }
-      }
-
-      loadDblpVenues();
-      loadCitations();
-
-      // ── News: show first 10, toggle the rest ──
+      // News: show first items, toggle the rest
       const newsBtn = document.getElementById("newsToggleBtn");
       const newsExtra = document.getElementById("newsListExtra");
       if (newsBtn && newsExtra) {
