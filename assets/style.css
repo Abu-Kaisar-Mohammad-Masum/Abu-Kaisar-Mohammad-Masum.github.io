@@ -6,7 +6,7 @@
   --line:rgba(15,23,42,.12);
   --accent:#2563eb;
   --good:#16a34a;
-  --gold:#d97706;
+  --gold:#D4AF37;
 }
 
 *{
@@ -423,7 +423,6 @@ code{
 
 /* =========================
    RESEARCH TOPIC LEGEND
-   NO BOXES
    ========================= */
 
 #research-map .venn-legend{
@@ -516,7 +515,6 @@ code{
 }
 
 /* Hide empty middle timeline span */
-
 .timeline li > span:nth-child(2){
   display:none;
 }
@@ -533,7 +531,6 @@ code{
 }
 
 /* Keep all News text same dark color */
-
 #news .timeline .item,
 #news .timeline .item span,
 #news .timeline .item b,
@@ -542,22 +539,19 @@ code{
 }
 
 /* =========================
-   GOLD TROPHY ICON
+   TRUE GOLD TROPHY ICONS
    ========================= */
 
 .trophy-icon{
-  color:var(--gold) !important;
+  color:#D4AF37 !important;
   margin-right:6px;
 }
 
-#news .trophy-icon{
-  color:#d97706 !important;
-}
-
-/* Make sure Font Awesome icon inherits gold */
+#news .trophy-icon,
 #news i.fa-trophy,
-#news .fa-trophy{
-  color:#d97706 !important;
+#news .fa-trophy,
+#news i.fa-solid.fa-trophy{
+  color:#D4AF37 !important;
 }
 
 /* =========================
