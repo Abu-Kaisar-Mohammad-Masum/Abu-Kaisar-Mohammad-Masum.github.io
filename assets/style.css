@@ -621,37 +621,42 @@ code{
    ========================= */
 
 .service-list{
-  margin-top:8px;
+  margin-top:10px;
 }
 
 .service-row{
   display:grid;
-  grid-template-columns:190px 1fr;
-  gap:28px;
+  grid-template-columns:220px 1fr;
+  column-gap:34px;
   align-items:start;
-  padding:6px 0 10px;
+  margin-bottom:24px;
+}
+
+.service-row:last-child{
+  margin-bottom:0;
 }
 
 .service-label{
   font-size:14px;
   font-weight:700;
   color:#111;
-  line-height:1.55;
+  line-height:1.6;
 }
 
 .service-content{
   font-size:14px;
-  line-height:1.55;
+  font-weight:400;
   color:#111;
+  line-height:1.65;
 }
 
 @media(max-width:700px){
   .service-row{
     grid-template-columns:1fr;
-    gap:2px;
+    row-gap:3px;
+    margin-bottom:18px;
   }
 }
-
 /* =========================
    PUBLICATIONS
    ========================= */
