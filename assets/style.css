@@ -683,7 +683,7 @@ code{
   overflow:visible;
   background:transparent;
   padding:10px 0 13px;
-  border-bottom:1px solid #e5e5e5;
+  border-bottom:none;
 }
 
 .thumb{
