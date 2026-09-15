@@ -530,12 +530,40 @@ code{
   font-size:12.5px;
 }
 
-/* Keep all News text same dark color */
-#news .timeline .item,
-#news .timeline .item span,
+/* Keep default News text dark,
+   but allow nested spans to use their own colors */
+#news .timeline .item{
+  color:#222;
+}
+
 #news .timeline .item b,
 #news .timeline .item strong{
-  color:#222 !important;
+  color:inherit;
+}
+
+/* NEW badge */
+.news-new{
+  color:#dc2626 !important;
+  font-style:italic;
+  font-weight:700;
+  font-size:11px;
+  margin-right:5px;
+}
+
+/* News venue highlight */
+.news-venue{
+  color:#1e3a8a !important;
+  font-weight:500;
+}
+
+/* If using inline span styles directly, allow them */
+#news .timeline .item span[style*="color:red"],
+#news .timeline .item span[style*="color: red"]{
+  color:red !important;
+}
+
+#news .timeline .item span[style*="#1e3a8a"]{
+  color:#1e3a8a !important;
 }
 
 /* =========================
@@ -616,6 +644,7 @@ code{
   box-shadow:none;
   background:#f0f4ff;
 }
+
 /* =========================
    ACADEMIC SERVICE
    ========================= */
@@ -657,6 +686,7 @@ code{
     margin-bottom:18px;
   }
 }
+
 /* =========================
    PUBLICATIONS
    ========================= */
@@ -683,7 +713,7 @@ code{
   overflow:visible;
   background:transparent;
   padding:10px 0 13px;
-  border-bottom:none;
+  border-bottom:none !important;
 }
 
 .thumb{
@@ -892,9 +922,4 @@ code{
     max-width:100%;
   }
 
-}
-
-/* Remove horizontal lines between publications */
-.pubcard{
-  border-bottom:none !important;
 }
