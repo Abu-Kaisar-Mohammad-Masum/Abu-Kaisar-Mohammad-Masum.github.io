@@ -893,3 +893,8 @@ code{
   }
 
 }
+
+/* Remove horizontal lines between publications */
+.pubcard{
+  border-bottom:none !important;
+}
